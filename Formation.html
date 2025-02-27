@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-CV Formations</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Animation d'apparition des éléments */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a1a, #600000);
+            color: white;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            padding-top: 80px; /* Augmenter la marge pour éviter que le contenu soit caché sous le menu */
+            overflow-y: auto;
+        }
+
+        /* Menu de navigation */
+        .navbar {
+            background-color: transparent;
+            padding: 20px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            justify-content: space-evenly;
+        }
+
+        .navbar li {
+            margin: 0 15px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #6c63ff;
+            transform: scale(1.1);
+        }
+
+        /* Menu hamburger */
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-icon div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+        }
+
+        .navbar.responsive ul {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .navbar.responsive li {
+            margin: 10px 0;
+        }
+
+        /* Container de formations */
+        .container {
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            margin-top: 60px; /* Assurez-vous que le contenu ne dépasse pas sous le menu */
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .formation {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 45%;
+            animation: fadeIn 1s ease-in-out;
+            transform: translateY(20px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .formation img {
+            width: 100%;
+            height: 200px; 
+            object-fit: cover;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
+        h1 {
+            color: white;
+        }
+
+        h2 {
+            color: #631010;
+        }
+
+        p {
+            color: white;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 1rem;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .primary {
+            background-color: #6c63ff;
+            color: white;
+            border: none;
+        }
+
+        .secondary {
+            background-color: transparent;
+            color: #6c63ff;
+            border: 2px solid #6c63ff;
+        }
+
+        .secondary:hover {
+            background-color: #6c63ff;
+            color: white;
+        }
+
+        /* Style pour le lien "Ce que j'ai appris" */
+        .learned-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+
+        .learned-link a {
+            text-decoration: none;
+            color: #6c63ff;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .learned-link a:hover {
+            color: white;
+        }
+
+        /* Responsive design */
+        @media screen and (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+                width: 90%;
+            }
+
+            .formation {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+
+            .navbar ul {
+                display: none;
+            }
+
+            .menu-icon {
+                display: flex;
+            }
+
+            .navbar.responsive ul {
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .navbar ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navbar li {
+                margin: 10px 0;
+            }
+
+            .container {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+
+            .formation {
+                width: 90%;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .btn {
+                font-size: 0.9rem;
+                padding: 8px 16px;
+            }
+
+            .learned-link {
+                font-size: 1rem;
+            }
+        }
+
+        /* Bouton retour à l'accueil */
+        .return-home {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #5f1111;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease;
+        }
+
+        .return-home:hover {
+            background-color: #15306b;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menu de navigation -->
+    <div class="navbar">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul>
+            <li><a href="competences.html">🛠️ Mes Compétences</a></li>
+            <li><a href="projet.html">💼 Mes Projets</a></li>
+            <li><a href="formation.html">🎓 Mes Formations</a></li>
+            <li><a href="contact.html">📞 Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <!-- Bloc Bac STI2D -->
+        <div class="formation">
+            <h1>Bac STI2D SIN</h1>
+            <h2>École Léonard de Vinci</h2>
+            <p>J'ai effectué mon Bac STI2D avec la spécialité Systèmes d'Information et Numérique (SIN) à l'école <a href="https://lpo-leonard-de-vinci-calais.62.ac-lille.fr/" target="_blank" style="color: #6c63ff;">Léonard de Vinci</a>.</p>
+            <img src="Img/Lycée.jpg" alt="Image Bac STI2D">
+            <div class="learned-link">
+                <p>Ce que j'ai appris :</p>
+                <a href="CompétenceLycée.html">Voir le tableau des compétences acquises</a>
+            </div>
+            <a href="https://lpo-leonard-de-vinci-calais.62.ac-lille.fr/" target="_blank" class="btn primary">Visiter l'établissement</a>
+        </div>
+
+        <!-- Bloc BUT Informatique -->
+        <div class="formation">
+            <h1>BUT Informatique</h1>
+            <h2>IUT du Littoral Côte d'Opale</h2>
+            <p>Je suis actuellement en fin de formation en BUT Informatique à l'<a href="https://www.iut-littoral.fr/" target="_blank" style="color: #6c63ff;">IUT du Littoral Côte d'Opale</a>.</p>
+            <img src="Img/IUT.jpg" alt="Image IUT">
+            <div class="learned-link">
+                <p>Ce que j'ai appris :</p>
+                <a href="CompétenceIUT.html">Voir le tableau des compétences acquises</a>
+            </div>
+            <a href="https://www.iut-littoral.fr/" target="_blank" class="btn primary">Visiter l'IUT</a>
+        </div>
+    </div>
+
+    <a href="index.html" class="return-home">Retour à l'accueil</a>
+
+    <script>
+        // Fonction pour afficher/masquer le menu hamburger
+        function toggleMenu() {
+            var navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('responsive');
+        }
+    </script>
+</body>
+</html>

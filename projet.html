@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Projets</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 1. Animation d'apparition des éléments */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Agrandir légèrement le bas de la page */
+        body {
+            background: linear-gradient(135deg, #1a1a1a, #600000);
+            color: white;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* On aligne les éléments au sommet */
+            overflow: hidden;
+            position: relative;
+            flex-direction: column;
+            margin-top: 30px;
+            padding-bottom: 50px; /* Ajouter de l'espace en bas de la page */
+        }
+
+        /* Menu de navigation */
+        .navbar {
+            background-color: transparent;
+            padding: 20px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            justify-content: space-evenly;
+        }
+
+        .navbar li {
+            margin: 0 15px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #6c63ff;
+            transform: scale(1.1); /* Légère augmentation de la taille au survol */
+        }
+
+        /* Menu burger pour les petits écrans */
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 11;
+            padding: 10px;
+        }
+
+        .menu-icon div {
+            width: 30px;
+            height: 4px;
+            background-color: white;
+            margin: 6px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* Animation burger : transformation en croix */
+        .menu-icon.open div:nth-child(1) {
+            transform: rotate(45deg);
+            position: relative;
+            top: 8px;
+        }
+
+        .menu-icon.open div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-icon.open div:nth-child(3) {
+            transform: rotate(-45deg);
+            position: relative;
+            top: -8px;
+        }
+
+        /* Masquer le menu de navigation sur les petits écrans */
+        .navbar.responsive ul {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.9); /* Fond sombre pour le menu */
+            position: absolute;
+            top: 5px; /* Déplace le menu juste sous le header */
+            left: 0;
+            padding: 10px 0;
+            border-radius: 8px;
+        }
+
+        .navbar.responsive li {
+            margin: 5px 0; /* Réduire l'espace entre les éléments du menu */
+        }
+
+        .navbar.responsive a {
+            font-size: 1.1rem; /* Réduire la taille de la police pour le menu déroulant */
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        .navbar.responsive a:hover {
+            color: #6c63ff;
+        }
+
+        /* 2. Effets de survol des boutons */
+        .btn:hover {
+            transform: translateY(-5px); /* Légère montée du bouton */
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .primary:hover {
+            background-color: #5851db;
+            transform: scale(1.05); /* Agrandir légèrement le bouton */
+        }
+
+        .secondary:hover {
+            background-color: #6c63ff;
+            color: white;
+            transform: scale(1.05); /* Agrandir légèrement le bouton */
+        }
+
+        .profile-img {
+            object-fit: cover;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #ff0000;
+            margin-bottom: 1rem;
+        }
+
+        /* 3. Zoom sur l'image de profil */
+        .profile-img:hover {
+            transform: scale(1.1); /* Agrandir l'image au survol */
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* 4. Ombres douces et lissées pour les éléments */
+        .card, .navbar a {
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Styles du fond animé */
+        .animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle, rgba(255,0,0,0.2) 10%, transparent 50%);
+            animation: moveBg 8s ease-in-out infinite;
+        }
+
+        .return-home {
+            position: fixed;
+            bottom: 5px;
+            right: 5px;
+            background-color: #5f1111;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease;
+        }
+
+        .return-home:hover {
+            background-color: #15306b;
+            transform: scale(1.1); /* Animation sur le bouton */
+        }
+
+
+        @keyframes moveBg {
+            0% { transform: translateX(-10%) translateY(-10%); }
+            50% { transform: translateX(10%) translateY(10%); }
+            100% { transform: translateX(-10%) translateY(-10%); }
+        }
+
+        /* 5. Animation pour le contenu au défilement */
+        .container {
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+        }
+
+        /* Conteneur des projets */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 1.5s ease-in-out;
+            max-height: 100vh; /* Limite la hauteur du conteneur à la hauteur de la fenêtre */
+            overflow-y: auto; /* Permet le défilement vertical si le contenu dépasse */
+        }
+
+        /* Carte de projet */
+        .project-card {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px); /* Légère montée au survol */
+        }
+
+        /* Image du projet */
+        .project-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        /* Description du projet */
+        .project-description {
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        /* Boutons de liens */
+        .project-links .btn {
+            display: inline-block;
+            margin: 5px;
+        }
+
+        /* Boutons spécifiques pour les projets */
+        .project-links .btn.primary {
+            background-color: #5851db;
+            color: white;
+        }
+
+        .project-links .btn.secondary {
+            background-color: transparent;
+            color: #6c63ff;
+            border: 2px solid #6c63ff;
+        }
+
+        .project-links .btn.secondary:hover {
+            background-color: #6c63ff;
+            color: white;
+        }
+
+        /* Style du titre des projets */
+        .project-card h3 {
+            font-size: 2rem; /* Taille plus grande */
+            color: #8a1111; /* Couleur rouge */
+            margin-bottom: 15px;
+        }
+
+        /* Responsive design */
+        @media screen and (max-width: 768px) {
+            .navbar ul {
+                display: none;
+                width: 100%;
+            }
+
+            .navbar.responsive ul {
+                display: block;
+            }
+
+            .navbar a {
+                font-size: 1.1rem;
+            }
+
+            .menu-icon {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menu de navigation -->
+    <div class="navbar">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul>
+            <li><a href="competences.html">🛠️ Mes Compétences</a></li>
+            <li><a href="projet.html">💼 Mes Projets</a></li>
+            <li><a href="formation.html">🎓 Mes Formations</a></li>
+            <li><a href="contact.html">📞 Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="animated-bg"></div>
+
+    <div class="container">
+        <div class="projects-container">
+            <div class="project-card">
+                <h3>Jeu video</h3>
+                <img src="Img/Jeu.png" alt="Projet 1" class="project-img">
+                <p class="project-description">
+                 Ce projet fait avec Pygame ma appris à avoir un très bon niveau sur Python en général mais aussi de prendre en compte ma gestion du temps en la rendant meilleur.
+                </p>
+                <div class="project-links">
+                    <a href="https://github.com/PayenAlexis62730/Projet-Payen_Alexis/tree/Jeu-Video-Python" target="_blank" class="btn primary">Voir sur GitHub</a>
+                    <a href="JeuVideo.html" class="btn secondary">En savoir plus</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Jeu de Dames</h3>
+                <img src="Img/Dame.png" alt="Projet 2" class="project-img">
+                <p class="project-description">
+                    Ceci est mon premier projet en Python qui m’a permis de comprendre les bases de la programmation ainsi que d'appliquer les mathématiques.
+                </p>
+                <div class="project-links">
+                    <a href="https://github.com/PayenAlexis62730/Projet-Payen_Alexis/tree/Jeu-de-Dame" target="_blank" class="btn primary">Voir sur GitHub</a>
+                    <a href="Dame.html" class="btn secondary">En savoir plus</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>UX/UI Design</h3>
+                <img src="Img/Charte Graphique.png" alt="Projet 2" class="project-img">
+                <p class="project-description">
+                    Ceci est le regroupement de toutes mes réalisations pour le UX/UI Design.
+                </p>
+                <div class="project-links">
+                    <a href="https://github.com/PayenAlexis62730/Projet-Payen_Alexis/tree/UX/UI-Design" target="_blank" class="btn primary">Voir sur GitHub</a>
+                    <a href="UX.html" class="btn secondary">En savoir plus</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Sites Web</h3>
+                <img src="Img/Web.png" alt="Projet 2" class="project-img">
+                <p class="project-description">
+                    Ici vous trouverez les meilleurs sites web Statique/Dynamique que j'ai conçus seul ou en groupe
+                </p>
+                <div class="project-links">
+                    <a href="https://github.com/PayenAlexis62730/Projet-Payen_Alexis/tree/Site-Web" target="_blank" class="btn primary">Voir sur GitHub</a>
+                    <a href="Web.html" class="btn secondary">En savoir plus</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Analyse D'image</h3>
+                <img src="Img/Astro.png" alt="Projet 2" class="project-img">
+                <p class="project-description">
+                    Ici se trouve mon projet sur l'analyse et la recherche d'images spatiales.
+                </p>
+                <div class="project-links">
+                    <a href="https://github.com/PayenAlexis62730/Projet-Payen_Alexis/tree/Analyse-Image" target="_blank" class="btn primary">Voir sur GitHub</a>
+                    <a href="Astro.html" class="btn secondary">En savoir plus</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Projet Co2</h3>
+                <img src="Img/Co2.png" alt="Projet 2" class="project-img">
+                <p class="project-description">
+                    Ceci est un gros projet mettant en pratique toutes les compétences acquises en Base de données, optimisation de code, développement et gestion de projet.
+                </p>
+                <div class="project-links">
+                    <a href="https://github.com/PayenAlexis62730/Projet-Payen_Alexis/tree/Projet-Co2" target="_blank" class="btn primary">Voir sur GitHub</a>
+                    <a href="Co2.html" class="btn secondary">En savoir plus</a>
+                </div>
+            </div>
+
+            <!-- Ajoute d'autres projets ici -->
+        </div>
+    </div>
+
+
+    <script>
+        // Fonction pour activer/désactiver le menu hamburger
+        function toggleMenu() {
+            var navbar = document.querySelector(".navbar");
+            navbar.classList.toggle("responsive");
+            var menuIcon = document.querySelector(".menu-icon");
+            menuIcon.classList.toggle("open");
+        }
+    </script>
+    
+    <a href="index.html" class="return-home">🏠 Retour à l'Accueil</a>
+
+
+</body>
+</html>

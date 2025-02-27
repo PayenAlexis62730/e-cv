@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos de moi - Payen Alexis</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Styles généraux */
+        body {
+            background: linear-gradient(135deg, #1a1a1a, #600000);
+            color: white;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            overflow-y: auto; /* Permet de défiler verticalement */
+            scroll-behavior: smooth;
+        }
+
+        /* Conteneur principal */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            flex-grow: 1;
+        }
+
+        /* Carte principale */
+        .card {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            box-sizing: border-box;
+            height: auto;
+            overflow-y: auto; /* Permet le défilement à l'intérieur de la carte */
+        }
+
+        /* Image de profil */
+        .profile-img {
+            object-fit: cover;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #ff0000;
+            margin-bottom: 1rem;
+        }
+
+        h1, h2 {
+            color: white;
+        }
+
+        p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .back-to-home {
+            background-color: #6c63ff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+            margin-top: 20px; /* Ajout d'un espace entre le contenu et ce bouton */
+        }
+
+        .back-to-home:hover {
+            background-color: #5851db;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>À propos de moi 👨‍💻</h1>
+            <img src="Img/Payen.jpg" alt="Photo de profil" class="profile-img">
+
+            <!-- Contenu à propos de moi avec emojis -->
+            <p>
+                Étudiant de fin de troisième année de BUT 🎓 et passionné par le monde de la technologie 💻, je suis en recherche d’alternance ou d’offre de recrutement pour mon domaine de prédilection, le développement web 🌐. <br><br>
+
+                Étant sorti avec une expertise en développement web 🖥️ aussi bien en front-end (HTML, CSS, Angular) 🌍 qu’en back-end (Node.js, PHP, Symfony) 🔧, habitué à travailler en méthodologie Agile ⚙️, je favorise une approche itérative et collaborative 🤝 pour optimiser la gestion de projet. Sensible aux enjeux de l’UX/UI design 🎨, j’intègre les bonnes pratiques en ergonomie et expérience utilisateur pour concevoir des interfaces intuitives et performantes 📱.<br><br>
+
+                Fan de codage 💻, de dessin ✏️ et de musique pop 🎶, j’aime allier créativité et technique pour proposer des solutions innovantes et intéressantes. 🎨<br><br>
+
+                Enfin, j’ai aussi le permis de conduire 🚗, ce qui me permet de n’avoir aucun problème de déplacement 🚀.
+            </p>
+
+            <!-- Bouton Retour à l'accueil -->
+            <a href="index.html">
+                <button class="back-to-home">Retour à l'accueil</button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

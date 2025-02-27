@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Payen Alexis</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Styles généraux */
+        body {
+            background: linear-gradient(135deg, #1a1a1a, #600000);
+            color: white;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            overflow-y: auto; /* Permet de défiler verticalement */
+            scroll-behavior: smooth;
+        }
+
+        /* Conteneur principal */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            flex-grow: 1;
+        }
+
+        /* Carte principale */
+        .card {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            box-sizing: border-box;
+            height: auto;
+            overflow-y: auto; /* Permet le défilement à l'intérieur de la carte */
+        }
+
+        /* Image de profil */
+        .profile-img {
+            object-fit: cover;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #ff0000;
+            margin-bottom: 1rem;
+        }
+
+        h1, h2 {
+            color: white;
+        }
+
+        p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        .contact-info a {
+            color: #6c63ff;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .contact-info a:hover {
+            color: #5851db;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #6c63ff;
+            background-color: transparent;
+            color: white;
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            background-color: #6c63ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-submit:hover {
+            background-color: #5851db;
+        }
+
+        /* Bouton Retour à l'accueil */
+        .back-to-home {
+            background-color: #6c63ff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+            margin-top: 20px; /* Ajout d'un espace entre le bouton envoyer et ce bouton */
+        }
+
+        .back-to-home:hover {
+            background-color: #5851db;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Contactez-moi 📱</h1>
+            <img src="Img/Payen.jpg" alt="Photo de profil" class="profile-img">
+
+            <!-- Informations de contact avec emojis -->
+            <div class="contact-info">
+                <p>🔗 <strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/alexis-payen-2b2b54290/" target="_blank">Alexis Payen</a></p>
+                <p>🐱 <strong>GitHub :</strong> <a href="https://github.com/PayenAlexis62730" target="_blank">PayenAlexis62730</a></p>
+                <p>📧 <strong>Email :</strong> <a href="mailto:alexispayen2004@gmail.com">alexispayen2004@gmail.com</a></p>
+                <p>📞 <strong>Téléphone :</strong> <a href="tel:+33637783874">06 37 78 38 74</a></p>
+                <p>🎮 <strong>Discord :</strong> gil#9858</p>
+            </div>
+
+            <!-- Formulaire de contact -->
+            <h2>Envoyer un message ✉️</h2>
+            <form action="mailto:alexispayen2004@gmail.com" method="post" enctype="text/plain">
+                <div class="form-group">
+                    <label for="name">Votre nom</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Votre email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Votre message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Envoyer</button>
+            </form>
+
+            <!-- Bouton Retour à l'accueil -->
+            <a href="index.html">
+                <button class="back-to-home">Retour à l'accueil</button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

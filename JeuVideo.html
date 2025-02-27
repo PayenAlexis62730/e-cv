@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu Vidéo - Détails du Projet</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a1a1a, #600000);
+            background-size: 400% 400%; /* Taille du fond pour l'animation */
+            animation: gradientAnimation 5s ease infinite; /* Animation du fond */
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            overflow-x: hidden;
+            overflow-y: auto;
+            height: auto;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin: 20px 0;
+            color: #ff0000;
+            text-align: center;
+            text-shadow: 3px 3px 10px rgba(255, 0, 0, 0.7);
+        }
+
+        .project-images {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+            flex-wrap: nowrap;
+            overflow: hidden;
+        }
+
+        .project-images img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(255, 0, 0, 0.5);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-images img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(255, 0, 0, 0.7);
+        }
+
+        /* Style pour l'image agrandie */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            margin: 20px;
+            border-radius: 10px;
+        }
+
+        .text-container, .video-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: #ff0000;
+            text-align: center;
+            text-shadow: 2px 2px 10px rgba(255, 0, 0, 0.5);
+        }
+
+        .tools-table {
+            width: 65%;
+            margin: 30px 0;
+            border-collapse: collapse;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.6);
+        }
+
+        .tools-table th, .tools-table td {
+            padding: 12px;
+            border: 1px solid #444;
+        }
+
+        .tools-table th {
+            background-color: #6c63ff;
+            color: white;
+        }
+
+        .tools-table td {
+            background-color: #333;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #5851db;
+            color: white;
+            font-size: 1.1rem;
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: 0.3s ease;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:hover {
+            background-color: #6c63ff;
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5);
+        }
+
+        .back-btn {
+            background-color: transparent;
+            color: #6c63ff;
+            border: 2px solid #6c63ff;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 18px;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background-color: #6c63ff;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🎮 Jeu Vidéo - Détails du Projet</h1>
+
+    <div class="project-images">
+        <img src="Img/Jeu.png" alt="Gameplay du jeu" onclick="openModal(this)">
+        <img src="Img/MenuJeu.png" alt="Menu principal" onclick="openModal(this)">
+        <img src="Img/Gestion.png" alt="Interface de gestion" onclick="openModal(this)">
+    </div>
+
+    <div class="text-container">
+        <p>Ce projet de jeu vidéo a été conçu avec <strong>Pygame</strong>, un module de Python permettant de créer des jeux en <strong>2D</strong>. 
+        L'objectif était de développer un jeu avec une gestion fluide des événements, une <strong>interface soignée</strong>, et une <strong>bonne optimisation</strong>.</p>
+        <p>🎯 J’ai acquis des compétences avancées en <strong>programmation orientée objet (POO)</strong>, en <strong>gestion des collisions</strong>, et en <strong>animation de sprites</strong>.</p>
+    </div>
+
+    <h2>🛠️ Outils Utilisés & Expérience Acquise</h2>
+
+    <table class="tools-table">
+        <thead>
+            <tr>
+                <th>🔧 Outil</th>
+                <th>📖 Description</th>
+                <th>📚 Ce que j'ai appris</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>🎮 Pygame</td>
+                <td>Utilisé pour créer l'environnement de jeu, gérer les sprites et animer les éléments.</td>
+                <td>J'ai appris à manipuler des objets visuels et à gérer des animations en temps réel pour créer une expérience utilisateur agréable.</td>
+            </tr>
+            <tr>
+                <td>🐍 Python</td>
+                <td>Développement du jeu avec une approche <strong>orientée objet</strong> et une gestion optimisée des événements.</td>
+                <td>J'ai approfondi mes connaissances en programmation orientée objet (POO), ce qui m'a permis de structurer le code de manière modulaire et réutilisable.</td>
+            </tr>
+            <tr>
+                <td>🗂️ GitHub</td>
+                <td>Utilisé pour le versionnement du code, l’organisation du projet et le suivi des modifications.</td>
+                <td>J'ai appris à utiliser Git et GitHub pour gérer les versions du projet et maintenir une traçabilité de toutes les modifications du code.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="video-container">
+        <p>🎥 Regardez la vidéo de démonstration de mon jeu :</p>
+        <a href="https://youtu.be/C-gkeDV6K4E" target="_blank" class="btn">▶️ Voir sur YouTube</a>
+    </div>
+
+    <a href="projet.html" class="btn back-btn">⬅️ Retour aux Projets</a>
+
+    <!-- Modal for image enlargement -->
+    <div class="modal" id="imageModal" onclick="closeModal()">
+        <img class="modal-content" id="modalImage" />
+    </div>
+
+    <script>
+        // Function to open modal with the clicked image
+        function openModal(imgElement) {
+            var modal = document.getElementById('imageModal');
+            var modalImage = document.getElementById('modalImage');
+            modal.style.display = 'flex';
+            modalImage.src = imgElement.src;
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            var modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

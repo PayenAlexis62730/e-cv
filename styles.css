@@ -1,0 +1,194 @@
+/* Styles généraux */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1a1a1a, #600000);
+    color: white;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Conteneur principal */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px; /* Espacement autour */
+}
+
+/* Carte principale */
+.card {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    max-width: 90%;  /* La carte ne prendra jamais plus de 90% de l'écran */
+    width: 100%;
+    box-sizing: border-box;
+    /* Ajout de la propriété pour assurer un dimensionnement flexible */
+}
+
+/* Image de profil */
+.profile-img {
+    width: 15vw; /* Utilisation de vw pour la taille de l'image */
+    height: 15vw;
+    border-radius: 50%;
+    border: 4px solid #ff0000;
+    margin-bottom: 1rem;
+}
+
+/* Titres */
+h1 {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #631010;
+    margin-bottom: 1rem;
+}
+
+/* Paragraphe */
+p {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Boutons */
+.buttons {
+    margin-top: 1.5rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.primary {
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+}
+
+.primary:hover {
+    background-color: #5851db;
+}
+
+.secondary {
+    background-color: transparent;
+    color: #6c63ff;
+    border: 2px solid #6c63ff;
+}
+
+.secondary:hover {
+    background-color: #6c63ff;
+    color: white;
+}
+
+/* Style pour le logo LinkedIn */
+.linkedin-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 5vw; /* Utilisation de vw pour la taille de l'icône LinkedIn */
+    height: auto;
+}
+
+.linkedin-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.linkedin-logo:hover img {
+    transform: scale(1.1); /* Zoom lors du survol */
+}
+
+/* Media Queries pour rendre la page responsive */
+
+/* Pour les écrans petits (smartphones) */
+@media (max-width: 600px) {
+    .profile-img {
+        width: 30vw; /* L'image de profil prend 30% de la largeur de l'écran */
+        height: 30vw;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+
+    .card {
+        width: 90%; /* La carte prend 90% de la largeur de l'écran */
+        padding: 1rem;
+    }
+
+    .linkedin-logo {
+        width: 10vw; /* Taille réduite pour les petits écrans */
+    }
+}
+
+/* Pour les écrans moyens (tablettes et petits ordinateurs) */
+@media (max-width: 1024px) {
+    .profile-img {
+        width: 18vw;
+        height: 18vw;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    .btn {
+        font-size: 1rem;
+    }
+
+    .card {
+        width: 80%;
+    }
+
+    .linkedin-logo {
+        width: 6vw;
+    }
+}
+
+/* Pour les écrans larges (ordinateurs de bureau) */
+@media (min-width: 1025px) {
+    .linkedin-logo {
+        width: 4vw;
+    }
+
+    .card {
+        width: 40%; /* La carte prend 40% de l'écran */
+    }
+}
